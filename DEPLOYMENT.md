@@ -12,7 +12,7 @@
 |-----|----------|
 | Họ và tên | Nguyễn Văn Minh |
 | Mã học viên | 2A202601972 |
-| Repo | K-3DAY12-2A202601972-NguyenVanMinh |
+| Repo | K3-DAY12-2A202601972-NguyenVanMinh |
 
 ## Service
 
@@ -42,18 +42,18 @@ Thay `<URL>` bằng Public URL ở trên:
 
 ```bash
 # 1. Liveness — mong đợi 200 {"status":"ok"}
-curl -i http://localhost:8000/health
+curl -i https://k3-day12-2a202601972-nguyenvanminh-production.up.railway.app/health
 
 # 2. Readiness — mong đợi 200 {"status":"ready"} (đã nối được Redis)
-curl -i http://localhost:8000/ready
+curl -i https://k3-day12-2a202601972-nguyenvanminh-production.up.railway.app/ready
 
 # 3. Không có API key — mong đợi 401
-curl -i -X POST http://localhost:8000/ask \
+curl -i -X POST https://k3-day12-2a202601972-nguyenvanminh-production.up.railway.app/ask \
   -H "Content-Type: application/json" \
   -d '{"question":"Hello"}'
 
 # 4. Có API key — mong đợi 200 kèm câu trả lời
-curl -i -X POST http://localhost:8000/ask \
+curl -i -X POST https://k3-day12-2a202601972-nguyenvanminh-production.up.railway.app/ask \
   -H "Content-Type: application/json" \
   -H "X-API-Key: $AGENT_API_KEY" \
   -H "X-User-Id: sv-test" \
@@ -61,7 +61,7 @@ curl -i -X POST http://localhost:8000/ask \
 
 # 5. Rate limit — gọi 15 lần, những lần cuối phải trả 429
 for i in $(seq 1 15); do
-  curl -s -o /dev/null -w "%{http_code} " -X POST http://localhost:8000/ask \
+  curl -s -o /dev/null -w "%{http_code} " -X POST https://k3-day12-2a202601972-nguyenvanminh-production.up.railway.app/ask \
     -H "Content-Type: application/json" \
     -H "X-API-Key: $AGENT_API_KEY" \
     -H "X-User-Id: sv-test" \
@@ -87,5 +87,6 @@ done; echo
 
 ## Nếu Dùng Phương Án Dự Phòng
 
-Phương án dự phòng Local Fallback: Sử dụng Docker Compose chạy trực tiếp trên môi trường local do chưa kết nối được Cloud Service.
+*(Không sử dụng — đã deploy thành công 100% trên Cloud Railway)*
+
 
