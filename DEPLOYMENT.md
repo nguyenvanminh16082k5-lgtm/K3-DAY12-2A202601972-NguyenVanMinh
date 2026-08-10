@@ -18,9 +18,8 @@
 
 | Mục | Nội dung |
 |-----|----------|
-| Public URL | http://localhost:8000 |
-| Platform | Railway / Docker Compose (Local Fallback) |
-
+| Public URL | https://k3-day12-2a202601972-nguyenvanminh-production.up.railway.app |
+| Platform | Railway |
 | Ngày deploy | 2026-08-10 |
 
 ## Biến Môi Trường Đã Set Trên Cloud
